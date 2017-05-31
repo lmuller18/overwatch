@@ -22,7 +22,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="statBox">
+                                <div class="statBox gamesWon">
                                     <div class="statBoxContent">
                                         <h1 class="card-heading italic-white">${quick.get(0).value}</h1>
                                         <p class="card-copy standard-white">${quick.get(0).title}</p>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="statBox">
+                                <div class="statBox fire">
                                     <div class="statBoxContent">
                                         <h1 class="card-heading italic-white">${quick.get(1).value}</h1>
                                         <p class="card-copy standard-white">${quick.get(1).title}</p>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="statBox">
+                                <div class="statBox objectiveTime">
                                     <div class="statBoxContent">
                                         <h1 class="card-heading italic-white">${quick.get(2).value}</h1>
                                         <p class="card-copy standard-white">${quick.get(2).title}</p>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="statBox">
+                                <div class="statBox timePlayed">
                                     <div class="statBoxContent">
                                         <h1 class="card-heading italic-white">${quick.get(3).value}</h1>
                                         <p class="card-copy standard-white">${quick.get(3).title}</p>
@@ -64,13 +64,13 @@
             <h1 class="italic-white">Hero Stats</h1>
                 <c:set var="topQuickHeroes" value="${player.getTopQuickHeroes()}"/>
                 <c:set var="quick" value="quickplay"/>
-                <div class="container">
+                <div class="container accordion">
                     <script>
                         var hours = [];
                         var heroes = [];
                     </script>
                     <c:forEach items="${topQuickHeroes}" var="hero">
-                        <div id="accordion">
+                        <div>
                             <div class="progress" data-toggle="collapse" data-target="#collapse${hero.heroClass}" data-parent="#accordion">
                                 <div class="progress-bar hero ${hero.heroClass}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" >
                                     <span class="form-group italic-white"><img class="hero-img" src="${hero.img}">${hero.hero}: ${hero.played}</span>

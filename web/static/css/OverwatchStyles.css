@@ -1,9 +1,13 @@
-body
-{
-    background-image: url(../images/moon.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size:cover;
+body {
+    background: url(../images/moon.jpg) no-repeat fixed;
+    background-size: cover;
+}
+
+@media only screen and (min-device-width : 100px) and (max-device-width : 700px) {
+    body {
+        background: url(../images/moon.jpg) no-repeat center center fixed;
+        background-size: cover;
+    }
 }
 
 body,
@@ -206,7 +210,6 @@ html {
 .progress span{
     position: absolute;
     display: block;
-    width: 100%;
     font-size: 30px;
     padding-left: 5px;
     text-shadow:
@@ -272,7 +275,7 @@ html {
 }
 
 .statBox {
-    background-color: #3c4860;
+    background-color: #333366 !important;
     padding: 24px;
     height: 160px;
     position: relative;
@@ -304,4 +307,28 @@ html {
     margin-top: 6px;
     line-height: 1.1;
     text-transform: uppercase;
+}
+
+.healing {
+    background: url(../images/healing.png) no-repeat 100% 0;
+}
+
+.fire {
+    background: url(../images/fire2.png) no-repeat 100% 0;
+}
+
+.damage {
+    background: url(../images/damage.png) no-repeat 100% 0;
+}
+
+.timePlayed {
+    background: url(../images/timePlayed.png) no-repeat 100% 0;
+}
+
+.objectiveTime {
+    background: url(../images/objectiveTime.png) no-repeat 100% 0;
+}
+
+.gamesWon {
+    background: url(../images/gamesWon.png) no-repeat 100% 0;
 }
