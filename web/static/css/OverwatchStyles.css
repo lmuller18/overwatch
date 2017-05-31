@@ -274,10 +274,9 @@ html {
 .statBox {
     background-color: #3c4860;
     padding: 24px;
-    height: 144px;
+    height: 160px;
     position: relative;
     overflow: hidden;
-    width:300px;
     margin: 5px;
     border: 2px solid #0f1630;
 }

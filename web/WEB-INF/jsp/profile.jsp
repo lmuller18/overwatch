@@ -5,85 +5,60 @@
 <div id="player-info" style="display: none;" class="search-header">
     <div class="jumbotron player-jumbo">
         <div class="row">
-            <div class="col-md-5">
-                <div class="row" style="margin: 20% 0;">
-                    <h1 class="italic-white" style="display: inline-block"><img width="80px" height="80px" src="${player.getPortrait()}"> ${player.getName()} </h1>
-                    <!--<div style="display: inline-block">
-                    <div class="player-level">
-                        <div class="u-vertical-center">${player.getLevel()}</div>
-                        <div class="player-rank"></div>
-                    </div>
-                </div>-->
-                </div>
-            </div>
-            <div class="col-md-7">
-                <ul class="nav nav-pills">
-                    <li role="presentation" class="active"><a href="#quick" aria-controls="quick" role="tab" data-toggle="tab">Quickplay</a></li>
-                    <li role="presentation"><a href="#comp" aria-controls="comp" role="tab" data-toggle="tab">Competitive</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active scroll" id="quick" style="max-height: 500px; overflow-y: auto">
-                        <c:set var="quick" value="${player.getQuickStat()}"/>
-                        <c:if test="${quick.size() != 4}">
-                            <h2 class="standard-white">No Quickplay Stats</h2>
-                        </c:if>
-                        <c:if test="${quick.size() == 4}">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="statBox">
-                                            <div class="statBoxContent">
-                                                <h1 class="card-heading italic-white">${quick.get(0).value}</h1>
-                                                <p class="card-copy standard-white">${quick.get(0).title}</p>
-                                            </div>
-                                        </div>
-                                        <div class="statBox">
-                                            <div class="statBoxContent">
-                                                <h1 class="card-heading italic-white">${quick.get(1).value}</h1>
-                                                <p class="card-copy standard-white">${quick.get(1).title}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="statBox">
-                                            <div class="statBoxContent">
-                                                <h1 class="card-heading italic-white">${quick.get(2).value}</h1>
-                                                <p class="card-copy standard-white">${quick.get(2).title}</p>
-                                            </div>
-                                        </div>
-                                        <div class="statBox">
-                                            <div class="statBoxContent">
-                                                <h1 class="card-heading italic-white">${quick.get(3).value}</h1>
-                                                <p class="card-copy standard-white">${quick.get(3).title}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:if>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade scroll" id="comp" style="max-height: 500px; overflow-y: auto">
-                        <c:set var="comp" value="${player.getCompStat()}"/>
-                        <c:if test="${comp.size() != 4}">
-                            <h2 class="standard-white">No Competitive Stats</h2>
-                        </c:if>
-                        <c:if test="${comp.size() == 4}">
-                            <div class="container">
-                                <div class="row">
-                                    <h1 class="standard-white">${comp.get(0).getTitle()}: ${comp.get(0).getValue()}</h1>
-                                    <h1 class="standard-white">${comp.get(1).getTitle()}: ${comp.get(1).getValue()}</h1>
-                                </div>
-                                <div class="row">
-                                    <h1 class="standard-white">${comp.get(2).getTitle()}: ${comp.get(2).getValue()}</h1>
-                                    <h1 class="standard-white">${comp.get(3).getTitle()}: ${comp.get(3).getValue()}</h1>
-                                </div>
-                            </div>
-                        </c:if>
-                    </div>
-                </div>
-            </div>
-            <hr>
+            <h1 class="italic-white" style="display: inline-block"><img width="80px" height="80px" src="${player.getPortrait()}"> ${player.getName()} </h1>
+            <!--<div style="display: inline-block">
+            <div class="player-level">
+                <div class="u-vertical-center">${player.getLevel()}</div>
+                <div class="player-rank"></div>
+            </div>-->
         </div>
+        <div class="row">
+            <div id="quick" style="max-height: 500px; overflow-y: auto">
+                <c:set var="quick" value="${player.getQuickStat()}"/>
+                <c:if test="${quick.size() != 4}">
+                    <h2 class="standard-white">No Quickplay Stats</h2>
+                </c:if>
+                <c:if test="${quick.size() == 4}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="statBox">
+                                    <div class="statBoxContent">
+                                        <h1 class="card-heading italic-white">${quick.get(0).value}</h1>
+                                        <p class="card-copy standard-white">${quick.get(0).title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="statBox">
+                                    <div class="statBoxContent">
+                                        <h1 class="card-heading italic-white">${quick.get(1).value}</h1>
+                                        <p class="card-copy standard-white">${quick.get(1).title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="statBox">
+                                    <div class="statBoxContent">
+                                        <h1 class="card-heading italic-white">${quick.get(2).value}</h1>
+                                        <p class="card-copy standard-white">${quick.get(2).title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="statBox">
+                                    <div class="statBoxContent">
+                                        <h1 class="card-heading italic-white">${quick.get(3).value}</h1>
+                                        <p class="card-copy standard-white">${quick.get(3).title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+            </div>
+        </div>
+        <hr>
 
         <div class="row">
             <h1 class="italic-white">Hero Stats</h1>
