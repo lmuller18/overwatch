@@ -1,19 +1,18 @@
 body {
-    background: url(../images/moon.jpg) no-repeat fixed;
+    background: url(../images/moon.jpg) 0 50px no-repeat fixed;
     background-size: cover;
 }
 
-@media only screen and (min-device-width : 100px) and (max-device-width : 700px) {
+@media only screen and (max-width: 450px) {
     body {
-        background: url(../images/moon.jpg) no-repeat center center fixed;
+        width: 100%;
+        height: 100%;
+        background: url(../images/mobile.jpg) no-repeat fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
     }
-}
-
-body,
-html {
-    width: 100%;
-    height: 100%;
 }
 
 .navbar-clear {
@@ -100,6 +99,15 @@ html {
     display: inline-block;
 }
 
+@media only screen and (max-width: 450px) {
+    .player-jumbo{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+}
+
+
 .divider {
     width: 400px;
     border-top: 1px solid #f8f8f8;
@@ -128,7 +136,7 @@ html {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
-@media(max-width:767px) {
+@media only screen and (max-width: 450px) {
     .search-container {
         padding-bottom: 15%;
     }
@@ -139,6 +147,11 @@ html {
 
     .divider {
         width: 100%;
+    }
+
+    .main-jumbo{
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
 
@@ -172,19 +185,19 @@ html {
     color: #FAA02E !important;
 }
 
-.scroll::-webkit-scrollbar-track
+.scroll::-webkit-scrollbar-track, div::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
 }
 
-.scroll::-webkit-scrollbar
+.scroll::-webkit-scrollbar, div::-webkit-scrollbar-track
 {
     width: 8px;
     background-color: #F5F5F5;
 }
 
-.scroll::-webkit-scrollbar-thumb
+.scroll::-webkit-scrollbar-thumb, div::-webkit-scrollbar-track
 {
     background-color: #F90;
     background-image: -webkit-linear-gradient(45deg,
@@ -274,6 +287,13 @@ html {
     left: auto;
 }
 
+@media only screen and (max-width: 450px) {
+    .carousel{
+        width: 100%;
+        margin: 0;
+    }
+}
+
 .statBox {
     background-color: #333366 !important;
     padding: 24px;
@@ -295,6 +315,7 @@ html {
     text-overflow: inherit;
     text-shadow: inherit;
 }
+
 .card-heading {
     line-height: .8;
     font-size: 6rem;
