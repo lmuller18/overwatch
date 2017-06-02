@@ -1,6 +1,7 @@
 body {
     background: url(../images/moon.jpg) 0 50px no-repeat fixed;
     background-size: cover;
+    padding-top: 50px;
 }
 
 @media only screen and (max-width: 450px) {
@@ -116,6 +117,7 @@ body {
 
 .search-header {
     padding-bottom: 50px;
+    padding-top: 50px;
     color: #f8f8f8;
     background-size: cover;
 }
@@ -152,6 +154,13 @@ body {
     .main-jumbo{
         margin-left: 5%;
         margin-right: 5%;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .main-jumbo{
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 
@@ -199,8 +208,7 @@ body {
 
 .scroll::-webkit-scrollbar-thumb, div::-webkit-scrollbar-track
 {
-    background-color: #F90;
-    background-image: -webkit-linear-gradient(45deg,
+    background: #F90 -webkit-linear-gradient(45deg,
     rgba(255, 255, 255, .2) 25%,
     transparent 25%,
     transparent 50%,

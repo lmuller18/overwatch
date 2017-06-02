@@ -50,11 +50,15 @@ public class Overwatch {
     public boolean retrieveData(String obj, String name, String code, String region, String platform) throws IOException{
         String playerInfo = "";
         URL url;
+        String username = name;
+        if(platform.equals("pc")){
+            username += "-" + code;
+        }
         if(obj.equals("hero")){
-            url = new URL("https://owapi.net/api/v3/u/"+name+"-"+code+"/heroes");
+            url = new URL("https://owapi.net/api/v3/u/"+username+"/heroes?platform="+platform);
         }
         else {
-            url = new URL("https://ancient-coast-85091.herokuapp.com/"+obj+"/"+platform+"/"+region+"/"+name+"-"+code+"");
+            url = new URL("https://ancient-coast-85091.herokuapp.com/"+obj+"/"+platform+"/"+region+"/"+username);
         }
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -87,6 +91,9 @@ public class Overwatch {
         } else if (obj.equals("profile")){
             profileObj = element.getAsJsonObject();
         } else {
+            if(!platform.equals("pc")){
+                region = "any";
+            }
             heroObj = element.getAsJsonObject().get(region).getAsJsonObject();
         }
         return true;

@@ -39,9 +39,9 @@
                    <div class="search-container">
                        <div class="jumbotron main-jumbo">
                            <form name="searchForm" method="POST" action="${pageContext.request.contextPath}/search">
-                               <label class="mr-sm-2" for="regionSelect">Username</label>
+                               <label class="mr-sm-2" for="playerName">Username</label>
                                <input id="playerName" type="text" name="playerName" class="form-control">
-                               <label class="mr-sm-2" for="regionSelect">Battlenet Code</label>
+                               <label class="mr-sm-2" for="playerCode">Battlenet Code</label>
                                <input id="playerCode" type="text" name="playerCode" class="form-control">
                                <label class="mr-sm-2" for="regionSelect">Region</label>
                                <select class="form-control" name="region" id="regionSelect">
@@ -52,7 +52,7 @@
                                    <option value="global">Global</option>
                                </select>
                                <label class="mr-sm-2" for="platformSelect">Platform</label>
-                               <select class="form-control" name="platform" id="platformSelect">
+                               <select class="form-control" name="platform" id="platformSelect" onchange="checkRegions()">
                                    <option value="pc">PC</option>
                                    <option value="xbl">XBL</option>
                                    <option value="psn">PSN</option>
@@ -102,5 +102,15 @@
                 jQuery("#search-header").slideDown('slow')
             });
         });
+
+        function checkRegions(){
+            var select = jQuery("#platformSelect");
+            if(select.val()=="pc"){
+                jQuery("label[for=regionSelect], #regionSelect").slideDown();
+            }else{
+                jQuery("label[for=regionSelect], #regionSelect").slideUp();
+            }
+
+        }
     </script>
 </html>
