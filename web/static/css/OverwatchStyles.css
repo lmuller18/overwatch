@@ -361,3 +361,7 @@ body {
 .gamesWon {
     background: url(../images/gamesWon.png) no-repeat 100% 0;
 }
+
+.hidden {
+    display: none;
+}

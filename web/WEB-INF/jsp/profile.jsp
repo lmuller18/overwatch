@@ -8,185 +8,44 @@
             <h1 class="italic-white" style="display: inline-block"><img width="80px" height="80px" src="${player.getPortrait()}"> ${player.getName()} </h1>
             <!--<div style="display: inline-block">
             <div class="player-level">
-                <div class="u-vertical-center">${player.getLevel()}</div>
+                <div class="u-vertical-center"></div>
                 <div class="player-rank"></div>
             </div>-->
         </div>
         <div class="row">
-            <div id="quick" style="max-height: 500px; overflow-y: auto">
-                <c:set var="quick" value="${player.getQuickStat()}"/>
-                <c:if test="${quick.size() != 4}">
-                    <h2 class="standard-white">No Quickplay Stats</h2>
-                </c:if>
-                <c:if test="${quick.size() == 4}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="statBox gamesWon">
-                                    <div class="statBoxContent">
-                                        <h1 class="card-heading italic-white">${quick.get(0).value}</h1>
-                                        <p class="card-copy standard-white">${quick.get(0).title}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="statBox fire">
-                                    <div class="statBoxContent">
-                                        <h1 class="card-heading italic-white">${quick.get(1).value}</h1>
-                                        <p class="card-copy standard-white">${quick.get(1).title}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="statBox objectiveTime">
-                                    <div class="statBoxContent">
-                                        <h1 class="card-heading italic-white">${quick.get(2).value}</h1>
-                                        <p class="card-copy standard-white">${quick.get(2).title}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="statBox timePlayed">
-                                    <div class="statBoxContent">
-                                        <h1 class="card-heading italic-white">${quick.get(3).value}</h1>
-                                        <p class="card-copy standard-white">${quick.get(3).title}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:if>
+            <div id="quick" class="quick" style="max-height: 500px; overflow-y: auto">
+                <jsp:include page="quickplayPlayer.jsp" />
+            </div>
+            <div id="comp" class="comp" style="max-height: 500px; overflow-y: auto; display: none;">
+                <jsp:include page="competitivePlayer.jsp" />
+            </div>
+        </div>
+        <div class="row">
+            <div align="right">
+                <input id="modeChange" type="checkbox" checked>
             </div>
         </div>
         <hr>
 
         <div class="row">
             <h1 class="italic-white">Hero Stats</h1>
-                <c:set var="topQuickHeroes" value="${player.getTopQuickHeroes()}"/>
-                <c:set var="quick" value="quickplay"/>
-                <div class="container accordion">
-                    <script>
-                        var hours = [];
-                        var heroes = [];
-                    </script>
-                    <c:forEach items="${topQuickHeroes}" var="hero">
-                        <div>
-                            <div class="progress" data-toggle="collapse" data-target="#collapse${hero.heroClass}" data-parent="#accordion">
-                                <div class="progress-bar hero ${hero.heroClass}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" >
-                                    <span class="form-group italic-white"><img class="hero-img" src="${hero.img}">${hero.hero}: ${hero.played}</span>
-                                </div>
-                            </div>
-                            <div id="collapse${hero.heroClass}" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div id="statCarousel${hero.heroClass}" class="carousel slide" data-interval="false" data-ride="carousel" >
-                                        <!-- Wrapper for slides -->
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item">
-                                                <div class="panel panel-stat">
-                                                    <div class="panel-heading italic-white">
-                                                        <!-- Controls -->
-                                                        <a class="carousel-left" href="#statCarousel${hero.heroClass}" role="button" data-slide="prev">
-                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-right" href="#statCarousel${hero.heroClass}" role="button" data-slide="next">
-                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                        <div align="center"> General Stats </div>
-                                                    </div>
-                                                    <div class="table-holder scroll">
-                                                        <table class="table">
-                                                            <c:set var="heroGeneralStats" value="${player.getHeroGeneralStats(hero.heroClass, quick)}"/>
-                                                            <c:if test="${heroGeneralStats != null}">
-                                                                <c:forEach items="${heroGeneralStats}" var="heroStat">
-                                                                    <tr>
-                                                                        <td class="italic-white"> ${heroStat.key}</td>
-                                                                        <td class="standard-white text-right value">${heroStat.value}</td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </c:if>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="panel panel-stat">
-                                                    <div class="panel-heading italic-white">
-                                                        <!-- Controls -->
-                                                        <a class="carousel-left" href="#statCarousel${hero.heroClass}" role="button" data-slide="prev">
-                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-right" href="#statCarousel${hero.heroClass}" role="button" data-slide="next">
-                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                        <div align="center"> Average Stats </div>
-                                                    </div>
-                                                    <div class="table-holder scroll">
-                                                        <table class="table average">
-                                                            <c:set var="heroAverageStats" value="${player.getHeroAverageStats(hero.heroClass, quick)}"/>
-                                                            <c:if test="${heroAverageStats != null}">
-                                                                <c:forEach items="${heroAverageStats}" var="heroAvgStat">
-                                                                    <tr>
-                                                                        <td class="italic-white"> ${heroAvgStat.key}</td>
-                                                                        <td class="standard-white text-right value">${heroAvgStat.value}</td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </c:if>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item active">
-                                                <div class="panel panel-stat">
-                                                    <div class="panel-heading italic-white">
-                                                        <!-- Controls -->
-                                                        <a class="carousel-left" href="#statCarousel${hero.heroClass}" role="button" data-slide="prev">
-                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-right" href="#statCarousel${hero.heroClass}" role="button" data-slide="next">
-                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                        <div align="center"> Specific Stats </div>
-                                                    </div>
-                                                    <div class="table-holder scroll">
-                                                        <table class="table">
-                                                            <c:set var="heroSpecificStats" value="${player.getHeroSpecificStats(hero.heroClass, quick)}"/>
-                                                            <c:if test="${heroSpecificStats != null}">
-                                                                <c:forEach items="${heroSpecificStats}" var="heroSpecStat">
-                                                                    <tr>
-                                                                        <td class="italic-white"> ${heroSpecStat.key}</td>
-                                                                        <td class="standard-white text-right value">${heroSpecStat.value}</td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </c:if>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="divider">
-                        <script>
-                            hours.push(${hero.hours});
-                            heroes.push("${hero.heroClass}");
-                        </script>
-                    </c:forEach>
-                </div>
+            <div class="container accordion quick">
+                <jsp:include page="quickplayHeroes.jsp" />
+            </div>
+            <div class="container accordion comp" style="display: none">
+                <jsp:include page="competitiveHeroes.jsp" />
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    jQuery(function() {
+        jQuery('#modeChange').bootstrapToggle({
+            on: 'Quickplay',
+            off: 'Competitive'
+        });
+    });
     var border = "${player.getBorder()}";
     var rank = "${player.getRank()}";
     jQuery(".player-level").css("background-image","url("+border+")");
@@ -201,10 +60,18 @@
     });
      **/
 
-    var topHours = "${player.getMostQuickHours()}";
-    hours.forEach(function(played, i){
-        var offset = (played/topHours)*100;
-        var progress = jQuery(".progress ."+heroes[i]);
+    var topQuickHours = "${player.getMostQuickHours()}";
+    quickHours.forEach(function(played, i){
+        var offset = (played/topQuickHours)*100;
+        var progress = jQuery(".quick .progress ."+quickHeroes[i]);
+        progress.attr("aria-valuenow", offset);
+        progress.css("width", offset+"%");
+    });
+
+    var topCompHours = "${player.getMostCompHours()}";
+    compHours.forEach(function(played, i){
+        var offset = (played/topCompHours)*100;
+        var progress = jQuery(".comp .progress ."+compHeroes[i]);
         progress.attr("aria-valuenow", offset);
         progress.css("width", offset+"%");
     });
@@ -225,6 +92,26 @@
             obj.text(text.substring(0, decLoc));
         } else {
             obj.text(num.toFixed(2))
+        }
+    });
+
+    jQuery('#modeChange').change(function() {
+        if(jQuery(this).prop('checked')){
+            jQuery(".comp").each(function () {
+                jQuery(this).slideUp( function() {
+                    jQuery(".quick").each(function () {
+                        jQuery(this).slideDown();
+                    });
+                });
+            });
+        } else {
+            jQuery(".quick").each(function () {
+                jQuery(this).slideUp( function() {
+                    jQuery(".comp").each(function () {
+                        jQuery(this).slideDown();
+                    });
+                });
+            });
         }
     });
 </script>

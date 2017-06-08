@@ -11,6 +11,8 @@
 <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="static/css/OverwatchStyles.css">
 <link rel="stylesheet" href="static/css/Heroes.css">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <html>
     <head>
@@ -102,13 +104,13 @@
                 jQuery("#search-header").slideDown('slow')
             });
         });
-
+        checkRegions();
         function checkRegions(){
             var select = jQuery("#platformSelect");
             if(select.val()=="pc"){
-                jQuery("label[for=regionSelect], #regionSelect").slideDown();
+                jQuery("label[for=playerCode], #playerCode, label[for=regionSelect], #regionSelect").slideDown();
             }else{
-                jQuery("label[for=regionSelect], #regionSelect").slideUp();
+                jQuery("label[for=playerCode], #playerCode, label[for=regionSelect], #regionSelect").slideUp();
             }
 
         }

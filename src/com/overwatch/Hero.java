@@ -72,6 +72,9 @@ public class Hero {
             if(this.played.contains("minutes")){
                 double toHours = Double.parseDouble(this.played.split(" ")[0]);
                 this.hours = toHours/60;
+            } else if (this.played.contains("seconds")) {
+                double toHours = Double.parseDouble(this.played.split(" ")[0]);
+                this.hours = toHours/3600;
             } else {
                 this.hours = Double.parseDouble(this.played.split(" ")[0]);
             }

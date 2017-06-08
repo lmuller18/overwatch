@@ -152,11 +152,14 @@ public class Overwatch {
             heroMap = new Gson().fromJson( new Gson().toJson(heroStats), t);
             if(heroMap == null){
                 heroMap = new HashMap<>();
-                heroMap.put("Hello", "test");
+                heroMap.put("Hours", "0");
             }
         } catch (NullPointerException ex){
             heroMap = new HashMap<>();
-            heroMap.put("Hello", "test");
+            heroMap.put("Hours", "0");
+        } catch (Exception e){
+            heroMap = new HashMap<>();
+            heroMap.put("Fatal", "Exception");
         }
 
         return heroMap;
