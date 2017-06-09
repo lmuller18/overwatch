@@ -5,7 +5,20 @@
 <div id="player-info" style="display: none;" class="search-header">
     <div class="jumbotron player-jumbo">
         <div class="row">
-            <h1 class="italic-white" style="display: inline-block"><img width="80px" height="80px" src="${player.getPortrait()}"> ${player.getName()} </h1>
+            <div class="col-sm-7">
+                <h1 class="italic-white" style="display: inline-block"><img width="80px" height="80px" src="${player.getPortrait()}"> ${player.getName()} </h1>
+
+            </div>
+            <div class="col-sm-5">
+                <div class="switch-container">
+                    <div class="input-switch">
+                        <label for="switchy">Quickplay</label>
+                        <input type="checkbox" id="switchy" class="input">
+                        <label for="switchy" class="switch"></label>
+                        <label for="switchy">Competitive</label>
+                    </div>
+                </div>
+            </div>
             <!--<div style="display: inline-block">
             <div class="player-level">
                 <div class="u-vertical-center"></div>
@@ -18,11 +31,6 @@
             </div>
             <div id="comp" class="comp" style="max-height: 500px; overflow-y: auto; display: none;">
                 <jsp:include page="competitivePlayer.jsp" />
-            </div>
-        </div>
-        <div class="row">
-            <div align="right">
-                <input id="modeChange" type="checkbox" checked>
             </div>
         </div>
         <hr>
@@ -95,19 +103,20 @@
         }
     });
 
-    jQuery('#modeChange').change(function() {
-        if(jQuery(this).prop('checked')){
-            jQuery(".comp").each(function () {
+
+    document.getElementById('switchy').addEventListener('click', function() {
+        if ( document.getElementById('switchy').checked ) {
+            jQuery(".quick").each(function () {
                 jQuery(this).slideUp( function() {
-                    jQuery(".quick").each(function () {
+                    jQuery(".comp").each(function () {
                         jQuery(this).slideDown();
                     });
                 });
             });
         } else {
-            jQuery(".quick").each(function () {
+            jQuery(".comp").each(function () {
                 jQuery(this).slideUp( function() {
-                    jQuery(".comp").each(function () {
+                    jQuery(".quick").each(function () {
                         jQuery(this).slideDown();
                     });
                 });

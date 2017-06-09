@@ -125,7 +125,17 @@ body {
 .search-container {
     position: relative;
     padding-top: 20%;
-    padding-bottom: 20%;
+}
+
+@media only screen and (max-width: 450px) {
+    .search-header {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .search-container {
+        padding-top: 10%;
+    }
 }
 
 .search-container > h1 {
@@ -364,4 +374,12 @@ body {
 
 .hidden {
     display: none;
+}
+
+@media only screen and (min-width: 450px) {
+    .switch-container {
+        display: flex;
+        align-items: center;
+        height: 110px;
+    }
 }
